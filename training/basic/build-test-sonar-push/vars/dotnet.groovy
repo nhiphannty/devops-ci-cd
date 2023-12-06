@@ -7,7 +7,7 @@ void call() {
     String baseTag       = "6.0"
     String demoRegistry = "demotraining.azurecr.io"
     String sonarToken = "sonar-token"
-    String acrCredential = 'acr-demo-token'
+    String acrCredential = 'acr-token'
     String rununitTest = "dotnet test --no-build -l:trx -c Release -p:DOTNET_RUNTIME_IDENTIFIER=linux-x64 --collect:'XPlat Code Coverage' --verbosity minimal --results-directory ./results"
 
 //========================================================================

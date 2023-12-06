@@ -9,7 +9,7 @@ void call() {
     String checkBranches = "$env.BRANCH_NAME"
     String[] deployBranches = ['main', 'jenkins']
     String sonarToken = "sonar-token"
-    String acrCredential = 'acr-demo-token'
+    String acrCredential = 'acr-token'
     String k8sCredential = 'akstest'
     String namespace = "demo"
     String rununitTest = "dotnet test --no-build -l:trx -c Release -p:DOTNET_RUNTIME_IDENTIFIER=linux-x64 --collect:'XPlat Code Coverage' --verbosity minimal --results-directory ./results"

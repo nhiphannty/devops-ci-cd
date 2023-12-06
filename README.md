@@ -40,7 +40,7 @@ Folder Structure
 			- docker
 	- added credentials
 		- GitHub with Kind Username with password (ID name: github)
-		- ACR with Kind Username with password (ID name: acr-demo-token)
+		- ACR with Kind Username with password (ID name: acr-token)
 		- SonarQube WebHook with Kind Secret text (ID name: sonarwh)
 		- SonarQube Token with Kind Secret text (ID name: sonar-token)
 		- kubeconig with Kind Secret file (ID name: config)
