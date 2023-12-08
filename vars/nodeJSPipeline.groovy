@@ -36,7 +36,7 @@ void call(Map pipelineParams) {
                 }
                 steps {
                     script {
-                        nodejs(${params.NAME})
+                        nodejs(params.NAME)
                     }
                 }
             }
