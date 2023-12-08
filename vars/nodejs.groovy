@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-void call(String name) {
+void call(name) {
     String registry = "pdevopsacr.azurecr.io"
     String acrCredential = 'acr-token'
     String k8sCredential = 'akstest'
