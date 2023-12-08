@@ -5,6 +5,10 @@ void call(Map pipelineParams) {
 
         agent any
 
+        parameters {
+            string(name: 'NAME', defaultValue: 'pdevops', description: 'Name used in Docker and Kubernetes')
+        }
+
         options {
             disableConcurrentBuilds()
             disableResume()
@@ -32,7 +36,7 @@ void call(Map pipelineParams) {
                 }
                 steps {
                     script {
-                        dotnet()
+                        nodejs(${params.NAME})
                     }
                 }
             }
