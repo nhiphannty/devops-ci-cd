@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-void call(String name) {
+void call() {
 
     pipeline {
 
