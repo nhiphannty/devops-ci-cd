@@ -3,12 +3,7 @@ void call(Map pipelineParams) {
 
     pipeline {
 
-        agent {
-            node {
-                label getLabelValue()
-                customWorkspace '/src/' + params.PROJECT
-            }
-        }
+        agent any
 
         parameters {
             choice(name: 'PROJECT', choices: ['backend', 'frontend'], description: 'Project build')
@@ -40,8 +35,10 @@ void call(Map pipelineParams) {
                     }
                 }
                 steps {
-                    script {
-                        nodejs(params.PROJECT)
+                    dir('./src/'+params.PROJECT) {
+                        script {
+                            nodejs(params.PROJECT)
+                        }
                     }
                 }
             }
