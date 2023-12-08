@@ -3,7 +3,16 @@ void call(String name) {
 
     pipeline {
 
-        agent any
+        agent {
+            node {
+                label params.PROJECT
+                customWorkspace '/src/' + params.PROJECT
+            }
+        }
+
+        parameters {
+            choice(name: 'PROJECT', choices: ['backend', 'frontend'], description: 'Project build')
+        }
 
         options {
             disableConcurrentBuilds()
@@ -32,7 +41,7 @@ void call(String name) {
                 }
                 steps {
                     script {
-                        nodejs(name)
+                        nodejs(params.PROJECT)
                     }
                 }
             }
