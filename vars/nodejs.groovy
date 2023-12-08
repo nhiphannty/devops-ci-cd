@@ -14,7 +14,9 @@ void call(name) {
     }
 
     stage ("Build") {
-        docker.build("${registry}/${name}:${BUILD_NUMBER} --no-cache -f ./.ci/Dockerfile")
+        docker.build("${registry}/${name}:${BUILD_NUMBER}", "--force-rm --no-cache -f ./.ci/Dockerfile \
+        --build-arg IMG_VERSION=${BUILD_NUMBER} \
+        --build-arg ENTRYPOINT=${runtime} --build-arg RUNVER=${baseTag} .")
     }
 
     stage ("Push Docker Images") {
