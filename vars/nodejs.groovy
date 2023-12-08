@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 void call() {
-    String name = "backend"
+    String name = params.PROJECT
     String registry = "pdevopsacr.azurecr.io"
     String acrCredential = 'acr-token'
     String k8sCredential = 'akstest'
