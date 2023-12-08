@@ -3,12 +3,7 @@ void call() {
 
     pipeline {
 
-        agent {
-            node {
-                label params.PROJECT
-                customWorkspace '/src/' + params.PROJECT
-            }
-        }
+        agent any
 
         parameters {
             choice(name: 'PROJECT', choices: ['backend', 'frontend'], description: 'Project build')
