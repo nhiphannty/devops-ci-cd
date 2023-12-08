@@ -32,7 +32,7 @@ void call(String name) {
                 }
                 steps {
                     script {
-                        nodejs(params.NAME1)
+                        nodejs(name)
                     }
                 }
             }
