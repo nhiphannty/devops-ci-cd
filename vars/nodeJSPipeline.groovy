@@ -1,13 +1,9 @@
 #!/usr/bin/env groovy
-void call(Map pipelineParams) {
+void call(String name) {
 
     pipeline {
 
         agent any
-
-        parameters {
-            string(name: 'NAME', defaultValue: pipelineParams.NAME, description: 'Name used in Docker and Kubernetes')
-        }
 
         options {
             disableConcurrentBuilds()
@@ -36,7 +32,7 @@ void call(Map pipelineParams) {
                 }
                 steps {
                     script {
-                        nodejs(params.NAME)
+                        nodejs(params.NAME1)
                     }
                 }
             }
