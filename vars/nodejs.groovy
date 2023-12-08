@@ -14,7 +14,7 @@ void call(name) {
     }
 
     stage ("Build") {
-        docker.build("${registry}/${name}:${BUILD_NUMBER}", "--force-rm --no-cache -f ./.ci/Dockerfile")
+        docker.build("${registry}/${name}:${BUILD_NUMBER} --no-cache -f ./.ci/Dockerfile")
     }
 
     stage ("Push Docker Images") {

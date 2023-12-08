@@ -6,7 +6,7 @@ void call(Map pipelineParams) {
         agent any
 
         parameters {
-            string(name: 'NAME', defaultValue: 'pdevops', description: 'Name used in Docker and Kubernetes')
+            string(name: 'NAME', description: 'Name used in Docker and Kubernetes')
         }
 
         options {
