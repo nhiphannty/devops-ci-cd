@@ -21,26 +21,6 @@ void call(Map pipelineParams) {
         }
         
         stages {
-            stage ('Load Pipeline') {
-                when {
-                    allOf {
-                        // Condition Check
-                        anyOf{
-                            // Branch Event: Nornal Flow
-                            anyOf {
-                                branch 'main'
-                                branch 'jenkins'
-                                branch 'PR-*'
-                            }
-                            // Manual Run: Only if checked.
-                            allOf{
-                                triggeredBy 'UserIdCause'
-                            }
-                        }
-                    }
-                }
-            }
-
             stage ('Prepare Package') {
                 script {
                     writeFile file: '.ci/Dockerfile', text: libraryResource('nodejs/Dockerfile')
