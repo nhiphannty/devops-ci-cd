@@ -1,9 +1,14 @@
 #!/usr/bin/env groovy
-void call() {
+void call(Map pipelineParams) {
 
     pipeline {
 
-        agent any
+        agent {
+            node {
+                label params.PROJECT
+                customWorkspace '/src/' + params.PROJECT
+            }
+        }
 
         parameters {
             choice(name: 'PROJECT', choices: ['backend', 'frontend'], description: 'Project build')
