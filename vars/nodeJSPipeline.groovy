@@ -5,6 +5,7 @@ void call(Map pipelineParams) {
 
         agent {
             node {
+                label getLabelValue()
                 customWorkspace '/src/' + params.PROJECT
             }
         }
