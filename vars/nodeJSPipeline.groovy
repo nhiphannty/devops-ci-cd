@@ -35,8 +35,10 @@ void call(Map pipelineParams) {
                     }
                 }
                 steps {
-                    script {
-                        nodejs()
+                    dir('./src/backend') {
+                        script {
+                            nodejs()
+                        }
                     }
                 }
             }
