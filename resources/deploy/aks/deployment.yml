@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ${appname}
-        image: ${registry}/demo/${appname}:${tag}
+        image: ${registry}/${appname}:${tag}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
