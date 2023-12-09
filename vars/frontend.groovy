@@ -1,13 +1,10 @@
 #!/usr/bin/env groovy
 void call(Map pipelineParams) {
+    String name = 'backend'
 
     pipeline {
 
         agent any
-
-        parameters {
-            choice(name: 'PROJECT', choices: ['backend', 'frontend'], description: 'Project build')
-        }
 
         options {
             disableConcurrentBuilds()
@@ -24,8 +21,9 @@ void call(Map pipelineParams) {
                             // Branch Event: Nornal Flow
                             anyOf {
                                 branch 'main'
-                                branch 'jenkins'
                                 branch 'PR-*'
+
+                                changeset 'src/backend/*'
                             }
                             // Manual Run: Only if checked.
                             allOf {
@@ -35,9 +33,9 @@ void call(Map pipelineParams) {
                     }
                 }
                 steps {
-                    dir("./src/${params.PROJECT}") {
+                     dir("./src/${name}") {
                         script {
-                            nodejs(params.PROJECT)
+                            nodejs(name)
                         }
                     }
                 }
