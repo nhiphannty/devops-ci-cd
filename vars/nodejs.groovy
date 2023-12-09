@@ -2,7 +2,7 @@
 void call(String name) {
     String registry = 'pdevopsacr.azurecr.io'
     String acrCredential = 'acr-token'
-    String k8sCredential = 'akstest'
+    String k8sCredential = 'aks'
     String namespace = 'pdevops'
 
     stage ('Prepare Package') {
