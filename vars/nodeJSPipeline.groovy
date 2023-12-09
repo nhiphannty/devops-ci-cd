@@ -35,7 +35,7 @@ void call(Map pipelineParams) {
                     }
                 }
                 steps {
-                    dir('./src/' + parameters.PROJECT) {
+                    dir("./src/${parameters.PROJECT}") {
                         script {
                             nodejs(parameters.PROJECT)
                         }
