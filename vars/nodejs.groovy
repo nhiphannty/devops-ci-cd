@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 void call() {
-    String name = params.PROJECT
+    String name = 'backend'
     String registry = "pdevopsacr.azurecr.io"
     String acrCredential = 'acr-token'
     String k8sCredential = 'akstest'
@@ -16,8 +16,7 @@ void call() {
 
     stage ("Build") {
         docker.build("${registry}/${name}:${BUILD_NUMBER}", "--force-rm --no-cache -f ./.ci/Dockerfile \
-        --build-arg IMG_VERSION=${BUILD_NUMBER} \
-        --build-arg ENTRYPOINT=${runtime} --build-arg RUNVER=${baseTag} .")
+        --build-arg IMG_VERSION=${BUILD_NUMBER} .")
     }
 
     // stage ("Push Docker Images") {
