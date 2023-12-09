@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 void call(Map pipelineParams) {
-    String name = 'backend'
+    String name = 'frontend'
 
     pipeline {
 
