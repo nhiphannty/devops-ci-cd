@@ -28,12 +28,12 @@ void call(String name) {
         }
     }
 
-    // stage ("Deploy To K8S") {
-    //     kubeconfig(credentialsId: k8sCredential, serverUrl: '') {
-    //         sh "export registry=${registry}; export appname=${name}; export tag=${BUILD_NUMBER}; \
-    //         envsubst < .ci/deployment.yml > deployment.yml; envsubst < .ci/service.yml > service.yml"
-    //         sh "kubectl apply -f deployment.yml -n ${namespace}"
-    //         sh "kubectl apply -f service.yml -n ${namespace}"
-    //     }
-    // }
+    stage ("Deploy To K8S") {
+        kubeconfig(credentialsId: k8sCredential, serverUrl: '') {
+            sh "export registry=${registry}; export appname=${name}; export tag=${BUILD_NUMBER}; \
+            envsubst < .ci/deployment.yml > deployment.yml; envsubst < .ci/service.yml > service.yml"
+            sh "kubectl apply -f deployment.yml -n ${namespace}"
+            sh "kubectl apply -f service.yml -n ${namespace}"
+        }
+    }
 }
