@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: frontend
   labels:
-     app: backend
+     app: frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend
+      app: frontend
 
   template:
     metadata:
       labels:
-        app: backend
+        app: frontend
     spec:
       containers:
       - name: backend
-        image: pdevopsacr.azurecr.io/backend:latest
+        image: pdevopsacr.azurecr.io/frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

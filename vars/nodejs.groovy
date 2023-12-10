@@ -14,7 +14,7 @@ void call(String name) {
     }
 
     stage ('Build') {
-        docker.build("${registry}/${name}:${BUILD_NUMBER}", "--force-rm --no-cache -f ./.ci/Dockerfile \
+        docker.build("${registry}/${name}:latest", "--force-rm --no-cache -f ./.ci/Dockerfile \
         --build-arg IMG_VERSION=${BUILD_NUMBER} .")
     }
 
@@ -23,14 +23,14 @@ void call(String name) {
             usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
             docker.withRegistry("https://${registry}", acrCredential) {
                 sh "docker login ${registry} -u ${USERNAME} -p ${PASSWORD}"
-                sh "docker push ${registry}/${name}:${BUILD_NUMBER}"
+                sh "docker push ${registry}/${name}:latest"
             }
         }
     }
 
     stage ("Deploy To K8S") {
         kubeconfig(credentialsId: k8sCredential, serverUrl: '') {
-            sh "export registry=${registry}; export appname=${name}; export tag=${BUILD_NUMBER}; \
+            sh "export registry=${registry}; export appname=${name}; export tag=latest; \
             envsubst < .ci/deployment.yml > deployment.yml; envsubst < .ci/service.yml > service.yml"
             sh "kubectl apply -f deployment.yml -n ${namespace}"
             sh "kubectl apply -f service.yml -n ${namespace}"
